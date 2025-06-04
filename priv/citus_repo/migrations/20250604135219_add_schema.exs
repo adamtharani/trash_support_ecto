@@ -8,7 +8,7 @@ defmodule TrashSupport.CitusRepo.Migrations.AddSchema do
       add(:contactID, :integer, null: false)
       add(:taskID, :integer, null: false)
       add(:deletionUserID, :integer)
-      add(:deletionDate, :utc_datetime_usec)
+      add(:deletionDate, :timestamptz)
       add(:deletionIdentifier, :string)
     end
 
