@@ -2,14 +2,14 @@ defmodule TrashSupport.PlainPostgresRepo.Migrations.AddSchema do
   use Ecto.Migration
 
   def up do
-    create table(:ContactTaskJoinEcto, primary_key: false) do
+    create_if_not_exists table(:ContactTaskJoinEcto, primary_key: false) do
       add(:customer_id, :integer, primary_key: true, null: false)
       add(:_rowid, :integer, primary_key: true, null: false)
-      add(:contactID, :integer)
+      add(:contactID, :integer, null: false)
+      add(:taskID, :integer, null: false)
+      add(:deletionUserID, :integer)
       add(:deletionDate, :utc_datetime_usec)
       add(:deletionIdentifier, :string)
-      add(:deletionUserID, :integer)
-      add(:taskID, :integer)
     end
 
     execute("""
