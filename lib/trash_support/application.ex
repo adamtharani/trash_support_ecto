@@ -5,7 +5,7 @@ defmodule TrashSupport.Application do
 
   @impl true
   def start(_type, _args) do
-    children = [TrashSupport.Repo]
+    children = [TrashSupport.CitusRepo, TrashSupport.PlainPostgresRepo]
 
     opts = [strategy: :one_for_one, name: TrashSupport.Supervisor]
     Supervisor.start_link(children, opts)

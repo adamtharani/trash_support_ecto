@@ -1,4 +1,4 @@
-defmodule TrashSupport.Repo do
+defmodule TrashSupport.CitusRepo do
   use Ecto.Repo,
     otp_app: :trash_support,
     adapter: Ecto.Adapters.Postgres

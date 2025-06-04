@@ -1,4 +1,4 @@
-defmodule TrashSupport.Repo.Migrations.AddSchema do
+defmodule TrashSupport.PlainPostgresRepo.Migrations.AddSchema do
   use Ecto.Migration
 
   def up do
@@ -23,36 +23,6 @@ defmodule TrashSupport.Repo.Migrations.AddSchema do
     "deletionIdentifier" character varying,
     PRIMARY KEY (customer_id, _rowid)
     )
-    """)
-
-    execute("""
-    SELECT create_distributed_table('"public"."ContactTaskJoin"', 'customer_id')
-    """)
-
-    execute("""
-    SELECT create_distributed_table('"public"."ContactTaskJoinEcto"', 'customer_id')
-    """)
-  end
-
-  def down do
-  end
-
-  def up do
-    execute("""
-    CREATE TABLE IF NOT EXISTS "public"."ContactTaskJoin" (
-    customer_id bigint NOT NULL,
-    _rowid bigint NOT NULL,
-    "contactID" bigint NOT NULL,
-    "taskID" bigint NOT NULL,
-    "deletionUserID" bigint,
-    "deletionDate" timestamp with time zone,
-    "deletionIdentifier" character varying,
-    PRIMARY KEY (customer_id, _rowid)
-    )
-    """)
-
-    execute("""
-    SELECT create_distributed_table('"public"."ContactTaskJoin"', 'customer_id')
     """)
   end
 
